@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelian Obat - Medika Utama</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <h1>Medika Utama</h1>
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="dokter.html">Dokter & Layanan</a>
+            <a href="pemesanan.html">Pemesanan</a>
+            <a href="obat.html">Pembelian Obat</a>
+            <a href="konsultasi.html">Konsultasi</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <!-- Daftar Obat -->
+    <section class="content">
+        <h2>Pembelian Obat</h2>
+
+        <!-- Kartu Obat dengan Form Pembelian -->
+        <div class="card">
+            <h3>Paracetamol</h3>
+            <p>Obat pereda nyeri dan penurun demam. Digunakan untuk mengatasi demam dan sakit kepala.</p>
+            <form action="#" class="transaction-form">
+                <label for="quantity-paracetamol">Jumlah:</label>
+                <input type="number" id="quantity-paracetamol" name="quantity" min="1" max="10" required>
+                <button type="submit">Beli</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Amoxicillin</h3>
+            <p>Antibiotik untuk mengatasi infeksi bakteri, seperti infeksi tenggorokan, saluran pernapasan, dan kulit.</p>
+            <form action="#" class="transaction-form">
+                <label for="quantity-amoxicillin">Jumlah:</label>
+                <input type="number" id="quantity-amoxicillin" name="quantity" min="1" max="10" required>
+                <button type="submit">Beli</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Loratadine</h3>
+            <p>Antihistamin untuk meredakan gejala alergi seperti bersin, gatal, dan hidung tersumbat.</p>
+            <form action="#" class="transaction-form">
+                <label for="quantity-loratadine">Jumlah:</label>
+                <input type="number" id="quantity-loratadine" name="quantity" min="1" max="10" required>
+                <button type="submit">Beli</button>
+            </form>
+        </div>
+
+        <!-- Tambahkan formulir untuk obat-obatan lainnya dengan cara serupa -->
+    </section>
+
+    <!-- Konfirmasi Transaksi -->
+    <section class="confirmation">
+        <h2>Konfirmasi Pembelian</h2>
+        <p id="order-summary">Tidak ada pembelian yang diproses.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Medika Utama</p>
+    </footer>
+
+    <script>
+        // Script untuk menangani transaksi dan menampilkan konfirmasi pembelian
+        document.querySelectorAll('.transaction-form').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const obat = form.parentElement.querySelector('h3').innerText;
+                const jumlah = form.querySelector('input[name="quantity"]').value;
+                
+                const summary = document.getElementById('order-summary');
+                summary.innerHTML = `Anda telah membeli ${jumlah} buah ${obat}. Terima kasih atas pembelian Anda!`;
+                
+                alert(`Pembelian ${obat} sebanyak ${jumlah} berhasil.`);
+            });
+        });
+    </script>
+</body>
+</html>
